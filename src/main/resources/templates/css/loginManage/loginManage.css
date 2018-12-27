@@ -1,0 +1,20 @@
+.login-img-module{
+	width:125px ;
+	height: 84px;
+	float: left;
+	margin-left: 15px;
+	background-color: #eeeeee;
+	cursor: pointer;
+    background-size: 125px 84px;
+}
+.log-mod-sub{
+	margin: 15px;
+}
+.check-ok{
+	display: block;
+	margin-top: -85px;
+}
+.check-no{
+	display: none;
+	margin-top: -85px;
+}

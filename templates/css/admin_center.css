@@ -1,0 +1,57 @@
+/****自定义修改*****/
+#content-main {height: calc(100% - 103px);overflow: hidden;}
+.roll-right.J_tabRight{right: 80px;}
+.roll-right.btn-group {right: 10px;}
+
+.table.child-table tr{cursor: pointer;}
+.table.child-table tr.row-detial{display: none;}
+.breadcrumb > li a {color:#337ab7;font-size: 14px;line-height: 23px;}
+.breadcrumb > li{font-size: 14px;}
+.form-inline .form-group-sm{display: inline-block;}
+.float-e-margins .btn {margin:0;}
+.modal-body {padding: 20px 15px;}
+.ibox-tools a.btn-default {color: #fff;}
+
+
+/*
+ *
+ *   admin.css
+ *
+*/
+
+ul{list-style: none;padding: 0;}
+.btn-file {position: relative;}
+.btn-file .file{width: 100%;height: 100%;position: absolute;left: 0;top: 0;opacity: 0;filter:alpha(opacity=0);z-index: 1;cursor: pointer;}
+.nav-tabline {border-bottom: 1px solid #e4e4e4;}
+.nav-tabline li {border-bottom: 3px solid transparent;margin-bottom: -1px;}
+.nav-tabline li.active {border-bottom: 3px solid #0078d0;border-left: none;background-color:transparent;}
+.nav-tabline > li > a:hover, .nav-tabline > li > a:focus {background: none;color: #0078d0;}
+.nav-tabline > li.active > a, .nav-tabline > li.active > a:hover, .nav-tabline > li.active > a:focus {border: none;color: #0078d0;}
+
+.course_select_l{ width: 420px;float: left;height: 500px;border: 1px solid #ccc;padding: 10px;overflow-x: auto;}
+.course_select_r{ width: 420px;float: right;height: 500px;border: 1px solid #ccc;padding: 10px;overflow-x: auto;}
+.has-course-list .item{background-color:#F2F2F2;padding: 0 5px;margin-bottom: 10px;}
+.has-course-list .item p{margin-bottom: 5px;}
+.has-course-list .item .close{float: left;margin-right: 10px;font-size: 30px;color: #ed5565;}
+
+.site-module .title{border-left:3px solid #009966;padding: 5px;font-weight: 600;font-size: 16px;}
+.site-module .module-name{margin-top:5px;padding-bottom:5px;border-bottom: 1px dotted #ccc;font-size: 14px;}
+.site-module .module-name img{width: 28px;height: 28px;}
+.site-module .module-list{overflow: hidden;}
+.site-module .module-list .item{width: 250px;height: 140px;margin-left: 10px;margin-top: 10px; background-color:#F5F5F5; float: left;padding: 10px;}
+.site-module .module-list .item .img-panel{padding: 8px; width: 58px;height: 58px;float: left;background-color:#0099FF;border-radius: 5px;box-shadow: 4px 4px 4px #A6A6A6;}
+.site-module .module-list.gray .item .img-panel{background-color: #BCBCBC;}
+.site-module .module-list.warning .item .img-panel{background-color:#f8ac59;}
+.site-module .module-list.success .item .img-panel{background-color: #9966FF;}
+.site-module .module-list.green .item .img-panel{background-color: #66CC99;}
+.site-module .module-list .item .img-panel img{width: 100%;height: 100%;}
+
+.site-module .module-list .item .tags{margin-top: 10px;}
+.site-module .module-list .item .tags span{margin-right: 5px;color:#aeaeae;word-break: normal;display: inline-block;line-height: 25px;}
+.site-module .module-list .item .name{font-size: 18px;margin-top: 5px;margin-bottom: 5px;}
+
+
+.select-course span{float: left;padding: 5px 10px;border: 1px solid #ccc;border-radius: 3px;margin: 10px 5px 0  0;}
+.sel-price span{float: left;padding: 5px 10px;border: 1px solid #ccc;border-radius: 3px;min-width: 60px;margin-right: 20px;margin-bottom: 10px;
+    text-align: center; cursor: pointer;}
+.sel-price span.active{ border-color: #1ab394; color: #1ab394;}

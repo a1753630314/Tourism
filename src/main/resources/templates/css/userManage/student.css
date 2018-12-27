@@ -1,0 +1,71 @@
+.date-module{
+	width: 300px;
+	float: right;
+	margin-left: 10px;
+	height: 35px;
+}
+.date-module input{
+	height: 35px;
+}
+.select-module{
+	width: 150px;
+	float: right;
+	margin-left: 10px
+}
+.search-module{
+	width: 300px;
+	float: right;
+	margin-left: 10px
+}
+
+.flip-left{
+	float: left;
+}
+
+.download{
+	line-height: 50px;
+	vertical-align: middle;
+}
+.download-text{
+	width: 100%;
+	line-height: 30px;
+	vertical-align: middle;
+}
+.red{
+	color: red;
+}
+.upfile{
+	margin-top:50px;
+	margin-left: 40%;
+}
+
+
+.add-user{
+	width: 530px;
+	background-color: #FFFFFF;
+}
+.user-left{
+	width: 80px;
+	/*height: 500px;*/
+	float: left;
+	margin-top: 30px;
+    margin-left: 30px;
+}
+.user-ico{
+	width: 80px;
+	height: 80px;
+	float: left;
+	background-color: #e8e7e7;
+}
+.defaultBtn{
+	margin: 10px;
+}
+.user-right{
+	float: left;
+	width: 400px;
+}
+
+.sextype{
+	width: 100px;
+	float: left;
+}

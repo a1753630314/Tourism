@@ -1,0 +1,73 @@
+.i-checks{
+	overflow: hidden;
+	margin-right: 32px;
+    margin-left: 16px;
+}
+.i-checks label{
+	overflow: hidden;
+	padding: 0px;
+}
+.peopleBox{
+	width: 100%;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+.peopleBox input{
+	width: 100px;
+	float: left;
+}
+.peopleBox span{
+	width: 100px;
+	float: left;
+	display: inherit;
+	margin-left: 10px;
+}
+.img-preview-sm{
+	width: 100px !important;
+	height: 100px !important;
+}
+
+.help-block{
+	color: #999;
+	margin-top: 12px;
+}
+
+.modal-header{
+	padding: 15px !important;
+}
+
+.modal-header .modal-title{
+	text-align: left;
+    font-weight: 600;
+    font-size: 14px !important;
+}
+
+.inmodal .modal-body{
+	background-color: #fff !important;
+}
+
+.chosen-container{
+	width: 400px !important;
+}
+
+
+
+.codeBox .codeImg{
+	margin: 10px;
+}
+
+.codeBox p{
+	width: 100%;
+	font-size: 14px;
+	font-weight: bold;
+	color: #1ab394; 
+	text-align: center; 
+	
+}
+
+
+.codeBox .codeImg img{
+	width: 210px;
+}

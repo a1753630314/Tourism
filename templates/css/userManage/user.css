@@ -1,0 +1,149 @@
+.date-module{
+	width: 365px;
+	float: right;
+	margin-left: 10px;
+	height: 35px;
+}
+.date-module input{
+	height: 35px;
+}
+.select-module{
+	width: 150px;
+	float: right;
+	margin-left: 10px
+}
+.search-module{
+	width: 300px;
+	float: right;
+	margin-left: 10px
+}
+
+.flip-left{
+	float: left;
+}
+
+.download{
+	line-height: 50px;
+	vertical-align: middle;
+}
+.download-text{
+	width: 100%;
+	line-height: 30px;
+	vertical-align: middle;
+}
+.red{
+	color: red;
+}
+.upfile{
+	margin-top:50px;
+	margin-left: 40%;
+}
+
+
+.add-user{
+	width: 530px;
+	background-color: #FFFFFF;
+}
+.user-left{
+	width: 80px;
+	float: left;
+	margin-top: 30px;
+    margin-left: 30px;
+}
+.user-ico{
+	width: 80px;
+	height: 80px;
+	float: left;
+	background-color: #e8e7e7;
+}
+.defaultBtn{
+	margin: 10px;
+}
+.user-right{
+	float: right;
+	width: 380px;
+}
+.user-content{
+	float: left;
+	width: 380px;
+}
+.sextype{
+	width: 100px;
+	float: left;
+}
+.modal-body,.modal-content,.modal-header{
+	background-color: #FFFFFF;
+}
+
+.userModel{
+	width: 940px !important;
+}
+
+.user-btn-primary{
+	float: left;
+	margin-left: 45%;
+	margin-right: 15px;
+}
+
+.form-title{
+	text-align: center;
+	font-size: 14px;
+	color: #333333;
+	font-weight: bold;
+}
+
+#datepicker input{
+	width: 120px;
+}
+
+.add-group{
+	width: 264px;
+	float: right;
+}
+.add-group select{
+	width: 200px !important;
+	float: left;
+}
+	
+.add-group label{
+	float: left;
+}
+.table-span{
+	margin-left: 10px;
+}
+
+.datepicker{
+	z-index: 2050 !important;
+}
+.user-edit{
+	height: 435px;
+}
+.add-user{
+	height: 300px;
+}
+
+.date-form{
+	width: 200px;
+	float: left;
+	margin-left: 10px;
+	height: 35px;
+	margin-right: 20px;
+}
+.date-form input{
+	height: 35px;
+}
+
+/*.img-preview img{
+	height: auto !important;
+	width: 180px !important;
+}*/
+
+/*.image-crop{
+	width: 150px;
+	height: 150px;
+}
+
+.image-crop img{
+	height: auto !important;
+	width: 150px !important;
+}*/

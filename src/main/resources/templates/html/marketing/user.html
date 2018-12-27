@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>代理管理</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="../../css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="../../css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="../../css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+    <link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="../../css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../../css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="../../css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/company/default.css" rel="stylesheet">
+    <script type="text/javascript">
+    function updates(id,company,linkman,linktel,uname,upass){
+     	$('#id').val(id);
+       	$('#company').val(company);
+    	$('#linkman').val(linkman);
+    	$('#linktel').val(linktel);
+    	$('#uname').val(uname);
+    	$('#upass').val(upass);
+       }
+    </script>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+
+                <div class="ibox-title">
+                    <h3>客户管理</h3>
+                </div>
+                <div class="ibox-content">
+
+                    <form role="form"  action="userList" method="post" id="sel" class="form-inline m-b">
+
+
+                            <div class="form-group m-3">
+                            	<div class="input-group">
+	                                <input placeholder="请输入办事处名称" value="${fmt.family?if_exists}" name="family" class="input-sm form-control" type="text">
+	                                <span class="input-group-btn">
+	                                        <button type="submit" class="btn btn-sm btn-primary"> 搜索</button> </span>
+	                            </div>
+                            </div>
+
+
+                            <div class="form-group m-3" style="float: right;">
+                                <button class="btn btn-primary " type="button" id="add-save"  data-toggle="modal" data-target="#addModel"><i class="fa fa-plus"></i>&nbsp;新增客户</button>
+                            </div>
+                    </form>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped" id="table_friend_link">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>办事处名称</th>
+                                    <th>联系人</th>
+                                    <th>联系方式</th>
+                                    <th>账号</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <#if users.source??>
+                            <#list users.source as l> 
+						   		<tr> 
+						   			<td>${l_index+1}</td>
+									<td>${l.company?if_exists}</td> 
+									<td>${l.linkman?if_exists}</td> 
+									<td>${l.linktel?if_exists}</td> 
+									<td>${l.uname?if_exists}</td> 
+									<td>
+                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addModel" 
+                                        onclick="updates('${l.id?if_exists}','${l.company?if_exists}','${l.linkman?if_exists}','${l.linktel?if_exists}','${l.uname?if_exists}','${l.upass?if_exists}')">编辑</button>
+                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" onclick="del('${l.id?if_exists}')">删除</button>
+                                    </td>
+								</tr>
+						   </#list>
+						  </#if>
+                            </tbody>
+                        </table>
+                        <div class="hr-line-dashed"></div>
+                          <center>${users.pageStr?if_exists }</center>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--添加代理-->
+<div class="modal inmodal" id="addModel" tabindex="-1" role="dialog" aria-hidden="true" >
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal">
+	                	<span aria-hidden="true">×</span>
+	                	<span class="sr-only">关闭</span>
+	                </button>
+	                <h5 class="modal-title">编辑客户</h5>
+	            </div>
+
+		            <div class="modal-body ">
+		                <div class="">
+		                	<form class="form-horizontal" id="addform" >
+ 							<input   name="id"   id="id" class="form-control" required="" aria-required="true" type="hidden">
+		                        <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>办事处</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="办事处名称" name="company" id="company" class="form-control" required="" aria-required="true" type="text">
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;"></span>联系人</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="联系人" name="linkman" id="linkman" class="form-control" required="" aria-required="true" type="text">
+			                        </div>	
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;"></span>联系方式</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="联系方式" name="linktel" id="linktel" class="form-control" required="" aria-required="true" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>账号</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="账号" name="uname" id="uname" class="form-control" required="" aria-required="true" type="text">
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>密码</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="密码" name="upass" id="upass" class="form-control" required="" aria-required="true" type="password">
+			                        </div>
+			                    </div>
+
+
+
+	                        </form>
+	                        <div class="form-group text-center m-t-lg">
+			                        <button class="btn btn-primary" type="button" id="btn-user-save" data-type="save" data-pid="0" data-id="0">提交</button>
+			                        <button type="button" class="btn btn-default m-l-lg" data-dismiss="modal">取消</button>
+			                </div>
+		                </div>
+
+
+
+		            </div>
+
+
+	        </div>
+
+	    </div>
+</div>
+<!-- 全局js -->
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+<!-- 自定义js -->
+<script src="../../js/content.js?v=1.0.0"></script>
+<!--时间-->
+<!-- <script src="../../js/plugins/layer/laydate/laydate.js"></script> -->
+<!-- <script src="../../js/plugins/layer/layer.min.js"></script> -->
+
+<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+
+<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+<script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="../../js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="../../js/plugins/clockpicker/clockpicker.js"></script>
+<script src="../../js/plugins/chosen/chosen.jquery.js"></script>
+<script src="../../js/plugins/cropper/cropper.min.js"></script>
+<script src="../../js/demo/upLogo.js"></script>
+<script>
+    $(document).ready(function () {
+           $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+           $('#add-save').click(function() {
+        	$('#id').val("");
+            $('#company').val("");
+           	$('#linkman').val("");
+           	$('#linktel').val("");
+           	$('#uname').val("");
+           	$('#upass').val("");
+           });
+            $('#btn-user-save').click(function() {
+            	if($('#company').val()==""||$('#uname').val()==""||$('#upass').val()==""){
+             		alert("请输入*标记的字段");
+             		return;
+             	}
+                $.ajax({
+                	url: 'http://'+window.location.host+'/editUser',
+                    type: 'post',//提交的方式
+                    dataType:"json",
+                    data: $('#addform').serializeArray(),
+                    success: function(msg) {
+                 	if(msg.code==0){
+                 		alert(msg.content);
+                 		$("#sel").submit();
+                 	}else{
+                 		alert(msg.content);
+                 	}
+                    }, error : function() {    
+                        alert("网络连接异常，请刷新页面重新操作！");    
+                   } 
+                });
+            });
+            
+    });
+    function del(id){
+    	if(confirm("确认删除吗")){
+    		 $.ajax({
+    	           	url: 'http://'+window.location.host+'/delUser',
+    	               type: 'post',//提交的方式
+    	               dataType:"json",
+    	               data: {
+    	            	   "id":id
+    	               },
+    	               success: function(msg) {
+    	            	if(msg.code==0){
+    	            		alert(msg.content);
+    	            		$("#sel").submit();
+    	            	}else{
+    	            		alert(msg.content);
+    	            	}
+    	               }, error : function() {    
+    	                   alert("网络连接异常，请刷新页面重新操作！");    
+    	              } 
+    	           });
+    		}
+    } 
+</script>
+</body>
+</html>

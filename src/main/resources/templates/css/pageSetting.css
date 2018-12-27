@@ -1,0 +1,30 @@
+.friend_switch_right{
+	float: right;
+	margin-right: 10px;
+}
+.friend_del_lin{
+	height: 55px;
+}
+.friend_del_lin span{
+	line-height: 35px;
+	vertical-align: middle;
+}
+
+.up-friend{
+	margin-left: 20px;
+	float: left;
+}
+.del-friend{
+	float: left;
+}
+.down-friend{
+	margin-left: 20px;
+	float: left;
+}
+
+.about_margin{
+	margin-right: 20px;
+	float: left;
+}
+
+

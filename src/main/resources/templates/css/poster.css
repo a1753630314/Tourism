@@ -1,0 +1,11 @@
+.app-ico{
+	width: 55px;
+	height: 55px;
+	border: solid 2px #red;
+	float: left;
+	margin-right: 18px;
+	margin-bottom: 10px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	cursor: pointer;
+}

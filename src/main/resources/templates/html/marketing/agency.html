@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>代理管理</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="../../css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="../../css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="../../css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+    <link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="../../css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../../css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="../../css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/company/default.css" rel="stylesheet">
+    <link href="../../css/timePicker.css" rel="stylesheet">
+    <script type="text/javascript">
+    function updates(did,family,start_time,flight,time,destination,telephone,members,remarks){
+       	$('#did').val(did);
+    	$('#family').val(family);
+    	$('#hello').val(start_time);
+    	$('#flight').val(flight);
+    	$('#time').val(time);
+    	$('#destination').val(destination);
+    	$('#telephone').val(telephone);
+    	var st = members.replace(/<br\s*\/?>/gi,"\r\n");
+		$("#members").text(st);
+    	$('#remarks').val(remarks);
+       }
+    </script>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+
+                <div class="ibox-title">
+                    <h3>客人信息</h3>
+                </div>
+                <div class="ibox-content">
+
+                    <form role="form" action="agency" id="sel" method="post"  class="form-inline m-b">
+							<input type="hidden" name="sort" id="sort" value="${fmt.sort?if_exists}">
+                            <div class="form-group m-3" id="data_5">
+                            	<span>出发日期&nbsp;</span>
+	                                <div class="input-daterange input-group" id="datepicker">
+			                            <input type="text" class="input-sm form-control" name="startDate" value="${fmt.startDate?if_exists}">
+			                            <span class="input-group-addon">到</span>
+			                            <input type="text" class="input-sm form-control" name="endDate" value="${fmt.endDate?if_exists}">
+			                        </div>
+                            </div>
+
+                            <div class="form-group m-1">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="form-group m-3">
+                            	<div class="input-group">
+	                                <input placeholder="请输入客人姓名" class="input-sm form-control" name="family" value="${fmt.family?if_exists}" type="text">
+	                                <span class="input-group-btn">
+	                                        <button type="submit" class="btn btn-sm btn-primary"> 搜索</button> </span>
+	                            </div>
+                            </div>
+
+
+                            <div class="form-group m-3" style="float: right;">
+                                <button class="btn btn-primary " type="button"  data-toggle="modal" id="add-save" data-target="#addModel"><i class="fa fa-plus"></i>&nbsp;新增送机</button>
+                            </div>
+                    </form>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped" id="table_friend_link">
+                            <thead>
+                                <tr>
+                                    <th align="center">序号</th>
+
+                                    <th >出发日期 </th>
+                                    <th>航班信息</th>
+                                    <th id="onSort">航班时间
+                                     <#if fmt.sort=="asc">
+                                    <b class="caret" id="tupian" style="border-bottom: 4px dashed;border-top: 0px dashed;"></b>
+                                    <#else>
+                                    <b class="caret" id="tupian" style="border-bottom: 0px dashed;border-top: 4px dashed;"></b>
+                                    </#if>
+                                    </th>
+                                    <th>旅游目的地</th>
+                                    <th>客人姓名</th>
+                                    <th>联系方式</th>
+                                    <th>客人身份证</th>
+                                    <th>客人来源</th>
+                                    <th>其他备注</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <#list detas.source as l> 
+						   		<tr> 
+						   			<td>${l_index+1}</td>
+									<td>${l.start_time?if_exists}</td> 
+									<td>${l.flight?if_exists}</td> 
+									<td>${l.time?if_exists}</td> 
+									<td>${l.destination?if_exists}</td> 
+									<td>${l.family?if_exists}</td> 
+									<td>${l.telephone?if_exists}</td> 
+									<td>
+									${l.members?if_exists}
+									</td> 
+									<td>${l.company?if_exists}</td>
+									<td>${l.remarks?if_exists}</td> 
+									<td>
+                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addModel" onclick="updates('${l.did?if_exists}','${l.family?if_exists}','${l.start_time?if_exists}','${l.flight?if_exists}','${l.time?if_exists}','${l.destination?if_exists}','${l.telephone?if_exists}','${l.members?if_exists}','${l.remarks?if_exists}')">编辑</button>
+                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" onclick="del('${l.did?if_exists}')">删除</button>
+                                    </td>
+								</tr>
+						   </#list>
+                            </tbody>
+                        </table>
+                        <div class="hr-line-dashed"></div>
+                        <div class="fixed-table-pagination">
+                            <div class="pull-left flip-left">
+                                <span class="pagination-info"><a href="#" id="export">导出excel</a></span>
+                                       
+                            </div>
+                            </div>
+                                <center>${detas.pageStr?if_exists }</center>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--添加代理-->
+<div class="modal inmodal" id="addModel" tabindex="-1" role="dialog" aria-hidden="true" >
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal">
+	                	<span aria-hidden="true">×</span>
+	                	<span class="sr-only">关闭</span>
+	                </button>
+	                <h5 class="modal-title">送机服务</h5>
+	            </div>
+
+		            <div class="modal-body ">
+		                <div class="">
+		                	<form class="form-horizontal" id="addform" >
+								 <input   name="did"   id="did" class="form-control" required="" aria-required="true" type="hidden">
+		                        <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>客人姓名</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="请输入姓名" name="family" id="family" class="form-control" required="" aria-required="true" type="text">
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>出发日期</label>
+			                        <div class="col-sm-10">
+			                            <!-- <input  placeholder="出发日期"  class="form-control" required="" aria-required="true" type="text"> -->
+                                        <input id="hello" name="start_time"   class="laydate-icon form-control layer-date form-control">
+			                        </div>
+			                    </div>
+								<div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>航班</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="航班" name="flight"   id="flight" class="form-control" required="" aria-required="true" type="text">
+			                        </div>
+			                    </div>
+								<div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>航班时间</label>
+			                        <div class="col-sm-10">
+<!-- 			                           <input class=flatpickr data-enable-time=true data-no-calendar=true placeholder="Pick time"  value="09:00 PM"> -->
+			                          <input type="text" id="timePicker" name="time" value="00:00" class="form-control" required="" aria-required="true" >
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>目的地</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="旅游目的地" name="destination"  id="destination" class="form-control" required="" aria-required="true" type="text">
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label"><span style="color: red;">*</span>联系方式</label>
+			                        <div class="col-sm-10">
+			                            <input  placeholder="联系方式" name="telephone"  id="telephone" class="form-control" required="" aria-required="true" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+			                        </div>
+			                    </div>
+			                    <div class="form-group">
+			                        <label class="col-sm-2 control-label">身份证</label>
+			                        <div class="col-sm-10">
+			                        	<textarea rows="" cols="" name="members"  id="members" class="form-control" required="" placeholder="同组人员信息" aria-required="true"></textarea>
+<!-- 			                            <input  placeholder="同组人员信息" name="members"  id="members" class="form-control" required="" aria-required="true" type="text"> -->
+			                        </div>
+			                    </div>
+                                <div class="form-group">
+			                        <label class="col-sm-2 control-label">其他备注</label>
+			                        <div class="col-sm-10">
+			                            <input   class="form-control" name="remarks"  id="remarks" required="" aria-required="true" type="text">
+			                        </div>
+			                    </div>
+
+							</form>
+
+	                       
+	                        <div class="form-group text-center m-t-lg">
+			                        <button class="btn btn-primary" type="button" id="btn-save" data-type="save" data-pid="0" data-id="0">提交</button>
+			                        <button type="button" class="btn btn-default m-l-lg" data-dismiss="modal">取消</button>
+			                </div>
+			                 
+		                </div>
+
+
+
+		            </div>
+
+
+	        </div>
+
+	    </div>
+</div>
+<!-- 全局js -->
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+<!-- 自定义js -->
+<script src="../../js/content.js?v=1.0.0"></script>
+<!--时间-->
+<script src="../../js/plugins/layer/laydate/laydate.js"></script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
+
+<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+
+<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+<script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="../../js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="../../js/plugins/clockpicker/clockpicker.js"></script>
+<script src="../../js/plugins/chosen/chosen.jquery.js"></script>
+<script src="../../js/plugins/cropper/cropper.min.js"></script>
+<script src="../../js/jquery-timepicker.js"></script>
+<script src="../../js/demo/upLogo.js"></script>
+<script>
+    $(document).ready(function () {
+    	 $("#timePicker").hunterTimePicker();
+         
+           $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+            laydate({elem: "#hello", event: "focus", format: 'YYYY-MM-DD'});
+            
+            $('#add-save').click(function() {
+            	$('#did').val("");
+            	$('#family').val("");
+            	$('#hello').val("");
+            	$('#flight').val("");
+            	$('#time').val("");
+            	$('#destination').val("");
+            	$('#telephone').val("");
+        		$("#members").text("");
+            	$('#remarks').val("");
+            });
+            $('#onSort').click(function() {
+            	if($("#sort").val()=="desc"){
+            		$("#tupian").css({"border-bottom":"0px dashed","border-top":"4px dashed"});
+            		$("#sort").val("asc");
+            	}else{
+            		$("#tupian").css({"border-bottom":"4px dashed","border-top":"0px dashed"});
+            		$("#sort").val("desc");
+            	}
+            	$("#sel").submit();
+            });
+            $('#export').click(function() {
+            	$("#sel").attr("action", "/excel").submit();
+            	$("#sel").attr("action", "/agency");
+            });
+            
+             $('#btn-save').click(function() {
+             	if($('#family').val()==""||$('#hello').val()==""||$('#flight').val()==""||$('#time').val()==""||$('#destination').val()==""
+             		||$('#telephone').val()==""){
+             		alert("请输入*标记的字段");
+             		return;
+             	}
+             	
+            	 var strValue=$("#members").val().replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' '); 
+            	 var dataParam =$('#addform').serializeArray();
+            	 $.each(dataParam,function(index,item){
+            		 if(item.name=="members"){
+            			 item.value=strValue;
+            			 return;
+            		 }
+            	 });
+            $.ajax({
+           	url: 'http://'+window.location.host+'/addDetails',
+               type: 'post',//提交的方式
+               dataType:"json",
+               data: dataParam,
+               success: function(msg) {
+               	console.log(msg);
+            	if(msg.code==0){
+            		alert(msg.content);
+            		$("#sel").submit();
+            	}else{
+            		alert(msg.content);
+            	}
+               }, error : function() {    
+                   alert("网络连接异常，请刷新页面重新操作！");    
+              } 
+           }); 
+       	  }); 
+         
+    });
+    function del(did){
+    	if(confirm("确认删除吗")){
+    		 $.ajax({
+    	           	url: 'http://'+window.location.host+'/delDetails',
+    	               type: 'post',//提交的方式
+    	               dataType:"json",
+    	               data: {
+    	            	   "did":did
+    	               },
+    	               success: function(msg) {
+    	            	if(msg.code==0){
+    	            		alert(msg.content);
+    	            		$("#sel").submit();
+    	            	}else{
+    	            		alert(msg.content);
+    	            	}
+    	               }, error : function() {    
+    	                   alert("网络连接异常，请刷新页面重新操作！");    
+    	              } 
+    	           });
+    		}
+    }  
+</script>
+</body>
+</html>
